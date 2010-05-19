@@ -1,0 +1,11 @@
+parse_git_branch () {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+prompt_vitaly_setup() {
+  PS1='%{$fg_bold[red]%}➜ %{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(parse_git_branch)%{$fg_bold[blue]%} % %{$reset_color%} ✗ '
+  PS2="%_>"
+  setopt prompt_subst
+}
+
+prompt_vitaly_setup "$@"

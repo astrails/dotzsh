@@ -1,0 +1,30 @@
+# get the name of the branch we are on
+git_prompt_info() {
+  if [[ -d .git ]]; then
+    ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+    branch=${ref#refs/heads/}
+    CURRENT_BRANCH="git:(%{$fg[red]%}${branch}%{$fg[blue]%})%{$reset_color%}$(parse_git_dirty)"
+  else
+    CURRENT_BRANCH=''
+  fi
+
+  echo $CURRENT_BRANCH
+}
+
+parse_git_dirty () {
+  [[ $(git status | tail -n1) != "nothing to commit (working directory clean)" ]] && echo " %{$fg[yellow]%}✗%{$reset_color%}"
+}
+
+parse_git_branch () {
+  git branch --no-color 2> /dev/null | gsed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+
+prompt_vitaly3_setup() {
+  PS1='%{$fg_bold[red]%}➜ %{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(parse_git_branch)%{$fg_bold[blue]%} % %{$reset_color%}'
+  PS2="%_>"
+  setopt prompt_subst
+}
+
+prompt_vitaly3_setup "$@"
+
