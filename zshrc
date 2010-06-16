@@ -119,4 +119,6 @@ setopt prompt_subst
 autoload -U promptinit; promptinit
 prompt vitaly
 
-if [[ -s /Users/vitaly/.rvm/scripts/rvm ]] ;then source /Users/vitaly/.rvm/scripts/rvm ;fi
+if [[ -s ~/.rvm/scripts/rvm ]] ;then source ~/.rvm/scripts/rvm ;fi
+
+#set -o vi
