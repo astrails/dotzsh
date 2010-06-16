@@ -3,7 +3,7 @@ parse_git_branch () {
 }
 
 prompt_vitaly_setup() {
-  PS1='%{$fg_bold[red]%}➜ %{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(parse_git_branch)%{$fg_bold[blue]%} % %{$reset_color%} ✗ '
+  PS1='%{$fg_bold[red]%}➜ %{$fg_bold[green]%}%p %{$fg[cyan]%}%~ %{$fg_bold[blue]%}$(parse_git_branch)%{$fg_bold[blue]%} % %{$reset_color%} ✗ '
   PS2="%_>"
   setopt prompt_subst
 }
