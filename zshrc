@@ -110,6 +110,9 @@ bindkey "^[[6~" down-line-or-history
 
 bindkey "\e\b" backward-delete-word
 
+bindkey '^[[H' beginning-of-line
+bindkey '^[[F' end-of-line
+
 #bindkey "^Xh" _complete_help
 
 
