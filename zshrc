@@ -11,6 +11,7 @@ alias ls='ls -FG'
 alias ll='ls -FGl'
 
 alias sc=./script/console
+alias sd=./script/dbconsole
 alias ss=./script/server
 alias s3=/aws/s3cmd/s3cmd
 
