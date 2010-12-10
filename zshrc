@@ -15,6 +15,8 @@ alias sd=./script/dbconsole
 alias ss=./script/server
 alias s3=/aws/s3cmd/s3cmd
 
+alias :e=vim
+
 function ec2() {
   local ec2_conf=~/.aws/$1/ec2.sh
   local s3_conf=~/.aws/$1/s3.config
@@ -35,7 +37,7 @@ function ec2() {
 }
 
 function mm() { pwd > ~/.mm }
-function gg() { cd `cat ~/.mm` }
+function gg() { cd "`cat ~/.mm`" }
 
 # COLORS
 autoload colors; colors;
@@ -76,16 +78,6 @@ autoload -U select-word-style; select-word-style bash
 
 
 # COMPLETION
-autoload -Uz compinit; compinit
-
-# zstyle ':completion:*' completer ''
-# zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-# zstyle ':completion:*' max-errors 1
-# zstyle ':completion:*' menu select=1
-# zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-# zstyle :compinstall filename '/home/astrails/.zshrc'
-
-
 setopt auto_menu
 unsetopt menu_complete
 
@@ -99,23 +91,9 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-
 zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
 zstyle ':completion:*:*:(ssh|scp):*:*' hosts `sed 's/^\([^ ,]*\).*$/\1/' ~/.ssh/known_hosts`
 
-
-# BINDINGS
-bindkey -e
-
-bindkey "^[[A" history-search-backward
-bindkey "^[[B" history-search-forward
-
-bindkey "^[[5~" up-line-or-history
-bindkey "^[[6~" down-line-or-history
-
-bindkey "\e\b" backward-delete-word
-
-bindkey '^[[H' beginning-of-line
-bindkey '^[[F' end-of-line
-
-#bindkey "^Xh" _complete_help
-
+zstyle ':completion:*' insert-unambiguous true
+zstyle :compinstall filename '/Users/vitaly/.zshrc'
+autoload -Uz compinit; compinit
 
 # PROMPT
 
@@ -123,6 +101,46 @@ setopt prompt_subst
 autoload -U promptinit; promptinit
 prompt vitaly
 
-if [[ -s ~/.rvm/scripts/rvm ]] ;then source ~/.rvm/scripts/rvm ;fi
+# RVM
+if [[ -s ~/.rvm/scripts/rvm ]] ;then
+	source ~/.rvm/scripts/rvm
+elif [[ -s /usr/local/rvm/scripts/rvm ]] ;then
+	source /usr/local/rvm/scripts/rvm
+fi
 
-#set -o vi
+# BINDINGS
+#bindkey -e
+bindkey -v
+
+# Up
+bindkey "\e[A" history-search-backward
+# Down
+bindkey "\e[B" history-search-forward
+
+# PgUp. Fn-Shift-Up
+bindkey "\e[5~" up-line-or-history
+# PgDown. Fn-Shift-Down
+bindkey "\e[6~" down-line-or-history
+
+# Esc Backspace
+#bindkey "\e\b" backward-delete-word
+#bindkey "\e\b" vi-backward-kill-word
+
+# home. Fn-Shift-Left on mac
+bindkey "\e[H" beginning-of-line
+# end. Fn-Shift-Right on mac
+bindkey "\e[F" end-of-line
+
+# Esc .
+bindkey "\e." insert-last-word
+
+# Ctrl-A
+bindkey "^A" beginning-of-line
+# Ctrl-E
+bindkey "^E" end-of-line
+
+#bindkey "^Xh" _complete_help
+
+if [ -e ~/.zsh/local ]; then
+	source ~/.zsh/local
+fi
