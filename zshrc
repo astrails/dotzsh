@@ -13,7 +13,7 @@ alias ll='ls -FGl'
 alias sc=./script/console
 alias sd=./script/dbconsole
 alias ss=./script/server
-alias s3=/aws/s3cmd/s3cmd
+alias s3=/usr/local/s3cmd/s3cmd
 
 alias :e=vim
 
@@ -38,6 +38,15 @@ function ec2() {
 
 function mm() { pwd > ~/.mm }
 function gg() { cd "`cat ~/.mm`" }
+
+function ssh() {
+  local cmd=`whereis ssh`
+  if [ -e .ssh/config ]; then
+      $cmd -F .ssh/config "$@"
+  else
+      $cmd "$@"
+  fi
+}
 
 # COLORS
 autoload colors; colors;
