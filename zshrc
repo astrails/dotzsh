@@ -10,9 +10,9 @@ alias g='git'
 alias ls='ls -FG'
 alias ll='ls -FGl'
 
-alias sc=./script/console
-alias sd=./script/dbconsole
-alias ss=./script/server
+alias sc="if [ -f ./script/console ]; then ./script/console; else rails c --debugger; fi"
+alias sd="if [ -f ./script/dbconsole ]; then ./script/server; else rails db; fi"
+alias ss="if [ -f ./script/server ]; then ./script/server; else rails s --debugger; fi"
 alias s3=/aws/s3cmd/s3cmd
 
 alias :e=vim
@@ -144,3 +144,12 @@ bindkey "^E" end-of-line
 if [ -e ~/.zsh/local ]; then
 	source ~/.zsh/local
 fi
+export PATH=$HOME/local/bin:$PATH
+export PATH=/Library/PostgreSQL/9.0/bin:$PATH
+export PGDATA=/Library/PostgreSQL/9.0/data
+export PGDATABASE=postgres
+export PGUSER=postgres
+export PGPORT=5433
+export PGLOCALEDIR=/Library/PostgreSQL/9.0/share/locale
+export MANPATH=$MANPATH:/Library/PostgreSQL/9.0/share/man
+
