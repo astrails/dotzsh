@@ -109,7 +109,7 @@ autoload -Uz compinit; compinit
 setopt prompt_subst
 autoload -U promptinit; promptinit
 prompt vitaly
-
+unsetopt auto_name_dirs
 # RVM
 if [[ -s ~/.rvm/scripts/rvm ]] ;then
 	source ~/.rvm/scripts/rvm
@@ -158,7 +158,7 @@ export PATH=/Library/PostgreSQL/9.0/bin:$PATH
 export PGDATA=/Library/PostgreSQL/9.0/data
 export PGDATABASE=postgres
 export PGUSER=postgres
-export PGPORT=5433
+export PGPORT=5432
 export PGLOCALEDIR=/Library/PostgreSQL/9.0/share/locale
 export MANPATH=$MANPATH:/Library/PostgreSQL/9.0/share/man
 
