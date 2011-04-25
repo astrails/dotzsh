@@ -85,7 +85,6 @@ unsetopt beep nomatch
 
 autoload -U select-word-style; select-word-style bash
 
-
 # COMPLETION
 setopt auto_menu
 unsetopt menu_complete
@@ -112,9 +111,9 @@ prompt vitaly
 
 # RVM
 if [[ -s ~/.rvm/scripts/rvm ]] ;then
-	source ~/.rvm/scripts/rvm
+ source ~/.rvm/scripts/rvm
 elif [[ -s /usr/local/rvm/scripts/rvm ]] ;then
-	source /usr/local/rvm/scripts/rvm
+ source /usr/local/rvm/scripts/rvm
 fi
 
 # BINDINGS
@@ -151,7 +150,7 @@ bindkey "^E" end-of-line
 #bindkey "^Xh" _complete_help
 
 if [ -e ~/.zsh/local ]; then
-	source ~/.zsh/local
+    source ~/.zsh/local
 fi
 export PATH=$HOME/local/bin:$PATH
 export PATH=/Library/PostgreSQL/9.0/bin:$PATH
