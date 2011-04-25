@@ -11,7 +11,7 @@ alias ls='ls -FG'
 alias ll='ls -FGl'
 
 alias sc="if [ -f ./script/console ]; then ./script/console; else rails c --debugger; fi"
-alias sd="if [ -f ./script/dbconsole ]; then ./script/server; else rails db; fi"
+alias sd="if [ -f ./script/dbconsole ]; then ./script/dbconsole; else rails db; fi"
 alias ss="if [ -f ./script/server ]; then ./script/server; else rails s --debugger; fi"
 alias s3=/usr/local/s3cmd/s3cmd
 
