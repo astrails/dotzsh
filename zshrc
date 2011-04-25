@@ -109,7 +109,7 @@ autoload -Uz compinit; compinit
 setopt prompt_subst
 autoload -U promptinit; promptinit
 prompt vitaly
-unsetopt auto_name_dirs
+
 # RVM
 if [[ -s ~/.rvm/scripts/rvm ]] ;then
 	source ~/.rvm/scripts/rvm
