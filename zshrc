@@ -39,20 +39,11 @@ function ec2() {
 function mm() { pwd > ~/.mm }
 function gg() { cd "`cat ~/.mm`" }
 
-function ssh() {
-  local cmd=`whereis ssh`
-  if [ -e .ssh/config ]; then
-      $cmd -F .ssh/config "$@"
-  else
-      $cmd "$@"
-  fi
-}
-
 # COLORS
 autoload colors; colors;
 
 unset LSCOLORS
-export LSCOLORS="Gxfxcxdxbxegedabagacad"
+#export LSCOLORS="Gxfxcxdxbxegedabagacad"
 
 
 # GREP
