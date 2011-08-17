@@ -143,12 +143,4 @@ bindkey "^E" end-of-line
 if [ -e ~/.zsh/local ]; then
     source ~/.zsh/local
 fi
-export PATH=$HOME/local/bin:$PATH
-export PATH=/Library/PostgreSQL/9.0/bin:$PATH
-export PGDATA=/Library/PostgreSQL/9.0/data
-export PGDATABASE=postgres
-export PGUSER=postgres
-export PGPORT=5432
-export PGLOCALEDIR=/Library/PostgreSQL/9.0/share/locale
-export MANPATH=$MANPATH:/Library/PostgreSQL/9.0/share/man
-
+export DISPLAY=:99
