@@ -14,6 +14,7 @@ alias sc="if [ -f ./script/console ]; then ./script/console; else rails c --debu
 alias sd="if [ -f ./script/dbconsole ]; then ./script/dbconsole; else rails db; fi"
 alias ss="if [ -f ./script/server ]; then ./script/server; else rails s --debugger; fi"
 alias s3=/usr/local/s3cmd/s3cmd
+alias rd="rdebug -c"
 
 alias :e=vim
 
@@ -142,3 +143,4 @@ bindkey "^E" end-of-line
 if [ -e ~/.zsh/local ]; then
     source ~/.zsh/local
 fi
+export DISPLAY=:99
