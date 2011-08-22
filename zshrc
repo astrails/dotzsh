@@ -143,4 +143,3 @@ bindkey "^E" end-of-line
 if [ -e ~/.zsh/local ]; then
     source ~/.zsh/local
 fi
-export DISPLAY=:99
