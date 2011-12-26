@@ -40,6 +40,14 @@ function ec2() {
 function mm() { pwd > ~/.mm }
 function gg() { cd "`cat ~/.mm`" }
 
+function rake() {
+  if [ -e bin/rake ]; then
+      bin/rake "$@"
+  else
+      /usr/bin/env rake "$@"
+  fi
+}
+
 # COLORS
 autoload colors; colors;
 
