@@ -52,7 +52,7 @@ function rake() {
 autoload colors; colors;
 
 unset LSCOLORS
-#export LSCOLORS="Gxfxcxdxbxegedabagacad"
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
 
 
 # GREP
