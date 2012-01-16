@@ -10,9 +10,34 @@ alias g='git'
 alias ls='ls -FG'
 alias ll='ls -FGl'
 
-alias sc="if [ -f ./script/console ]; then ./script/console; else rails c --debugger; fi"
+
+function sc() {
+    set -x
+    if [ -f ./script/console ]; then
+        ./script/console --debugger "$@"
+    else
+        if [ -f ./bin/rails ]; then
+            ./bin/rails console --debugger "$@"
+        else
+            rails console --debugger "$@"
+        fi
+    fi
+    set +x
+}
+
+function ss() {
+    if [ -f ./script/server ]; then
+        ./script/server --debugger "$@"
+    else
+        if [ -f ./script/rails ]; then
+            ./script/rails server --debugger "$@"
+        else
+            rails server --debugger "$@"
+        fi
+    fi
+}
+
 alias sd="if [ -f ./script/dbconsole ]; then ./script/dbconsole; else rails db; fi"
-alias ss="if [ -f ./script/server ]; then ./script/server; else rails s --debugger; fi"
 alias s3=/usr/local/s3cmd/s3cmd
 alias rd="rdebug -c"
 
