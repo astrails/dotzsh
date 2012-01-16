@@ -1,0 +1,64 @@
+# some ideas from http://blog.peepcode.com/blog/2012/my-command-line-prompt
+
+_prompt_git_branch () {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+_prompt_rvm () {
+  if [ -n "$rvm_path" -a -e "$rvm_path/bin/rvm-prompt" ]; then
+    $rvm_path/bin/rvm-prompt
+  fi
+}
+
+_prompt_git_status () {
+  local git_dir=`git rev-parse --git-dir 2>/dev/null`
+
+  if [[ -n "$git_dir" ]]; then
+    local commit="%{[90m%}`git rev-parse --short HEAD`"
+
+    echo -n $commit
+
+    echo -n "%{$fg[yellow]%}"
+
+    if git ls -m | grep -q .; then
+      echo -n " ✶"
+    fi
+
+    if [[ -e "$git_dir/BISECT_LOG" ]];then
+      echo -n " +bisect"
+    fi
+
+    if [[ -e "$git_dir/MERGE_HEAD" ]];then
+      echo -n " +merge"
+    fi
+
+    if [[ -e "$git_dir/rebase" || -e "$git_dir/rebase-apply" || -e "$git_dir/rebase-merge" || -e "$git_dir/../.dotest" ]];then
+      echo -n " +rebase"
+    fi
+
+  fi
+}
+
+_prompt_setup() {
+  setopt prompt_subst
+
+  local last_status="%(?,%{$fg[green]%}☺%{$reset_color%},%{$fg[red]%}☹%{$reset_color%})"
+
+  local user_color='%(!,%{$fg_bold[red]%},%{$fg_bold[green]%})'
+  local current_host="%m ➜ "
+  local current_dir="%{$fg[cyan]%}%~"
+
+  PS1="${last_status}
+${user_color}${current_host} ${current_dir}
+✗ %{${reset_color}%}"
+
+  local current_rvm="%{[90m%}\$(_prompt_rvm)"
+  local current_branch="%{$fg_bold[blue]%}\$(_prompt_git_branch)%{$reset_color%}"
+  local current_git_status='$(_prompt_git_status)'
+
+  RPS1="${current_rvm} ${current_branch} ${current_git_status} %{${reset_color}%}"
+
+  PS2="%_>"
+}
+
+_prompt_setup "$@"
