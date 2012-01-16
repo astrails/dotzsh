@@ -3,9 +3,15 @@ parse_git_branch () {
 }
 
 prompt_vitaly_setup() {
-  PS1='%(!,%{$fg_bold[red]%},%{$fg_bold[green]%})%m ➜ %{$fg_bold[green]%}%p %{$fg[cyan]%}%~ %{$fg_bold[blue]%}$(parse_git_branch)%{$fg_bold[blue]%} % %{$reset_color%} ✗ '
-  PS2="%_>"
   setopt prompt_subst
+
+  local user_color='%(!,%{$fg_bold[red]%},%{$fg_bold[green]%})'
+  local current_host="${user_color}%m ➜ "
+  local current_dir="$fg[cyan]%~"
+  local current_branch="$fg_bold[blue]\$(parse_git_branch)"
+
+  PS1="$current_host $current_dir $current_branch $reset_color ✗ "
+  PS2="%_>"
 }
 
 prompt_vitaly_setup "$@"
