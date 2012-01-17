@@ -48,8 +48,7 @@ _prompt_setup() {
   local current_host="%m ➜ "
   local current_dir="%{$fg[cyan]%}%~"
 
-  PS1="${last_status}
-${user_color}${current_host} ${current_dir}
+  PS1="${last_status} ${user_color}${current_host} ${current_dir}
 ✗ %{${reset_color}%}"
 
   local current_rvm="%{[90m%}\$(_prompt_rvm)"
