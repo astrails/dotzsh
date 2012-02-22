@@ -62,8 +62,13 @@ function ec2() {
   fi
 }
 
-function mm() { pwd > ~/.mm }
-function gg() { cd "`cat ~/.mm`" }
+function chpwd {
+  pwd > ~/.last_dir
+}
+
+function mm() { pwd > ~/.last_dir }
+function gg() { cd "`cat ~/.last_dir`" }
+gg
 
 function rake() {
   if [ -e bin/rake ]; then
