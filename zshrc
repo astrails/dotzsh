@@ -62,14 +62,6 @@ function ec2() {
   fi
 }
 
-function chpwd {
-  pwd > ~/.last_dir
-}
-
-function mm() { pwd > ~/.last_dir }
-function gg() { cd "`cat ~/.last_dir`" }
-gg
-
 function rake() {
   if [ -e bin/rake ]; then
       bin/rake "$@"
@@ -181,3 +173,8 @@ bindkey "^E" end-of-line
 if [ -e ~/.zsh/local ]; then
     source ~/.zsh/local
 fi
+
+function mm() { pwd > ~/.last_dir }
+function gg() { cd "`cat ~/.last_dir`" }
+function chpwd { mm }
+gg
