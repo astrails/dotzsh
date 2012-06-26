@@ -131,7 +131,9 @@ autoload -U promptinit; promptinit
 prompt vitaly
 
 # RVM
-if [[ -s ~/.rvm/scripts/rvm ]] ;then
+if [[ -s /etc/profile.d/rvm.sh ]]; then
+  source /etc/profile.d/rvm.sh
+elif [[ -s ~/.rvm/scripts/rvm ]] ;then
  source ~/.rvm/scripts/rvm
 elif [[ -s /usr/local/rvm/scripts/rvm ]] ;then
  source /usr/local/rvm/scripts/rvm
