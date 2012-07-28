@@ -20,7 +20,7 @@ _prompt_git_status () {
 
     echo -n "%{$fg[yellow]%}"
 
-    if git ls -m | grep -q .; then
+    if git ls-files -m | grep -q .; then
       echo -n " ✶"
     fi
 
