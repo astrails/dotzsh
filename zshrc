@@ -140,37 +140,40 @@ elif [[ -s /usr/local/rvm/scripts/rvm ]] ;then
 fi
 
 # BINDINGS
-#bindkey -e
-bindkey -v
+bindkey -v                                          # Use vi key bindings
 
-# Up
-bindkey "\e[A" history-search-backward
-# Down
-bindkey "\e[B" history-search-forward
+bindkey '\ew' kill-region                           # [Esc-w] - Kill from the cursor to the mark
+bindkey -s '\el' 'ls\n'                             # [Esc-l] - run command: ls
+bindkey -s '\e.' '..\n'                             # [Esc-.] - run command: .. (up directory)
+bindkey '^r' history-incremental-search-backward    # [Ctrl-r] - Search backward incrementally for a specified string. The string may begin with ^ to anchor the search to the beginning of the line.
+bindkey '^[[5~' up-line-or-history                  # [PageUp] - Up a line of history
+bindkey '^[[6~' down-line-or-history                # [PageDown] - Down a line of history
 
-# PgUp. Fn-Shift-Up
-bindkey "\e[5~" up-line-or-history
-# PgDown. Fn-Shift-Down
-bindkey "\e[6~" down-line-or-history
+bindkey '^[[A' up-line-or-search                    # start typing + [Up-Arrow] - fuzzy find history forward
+bindkey '^[[B' down-line-or-search                  # start typing + [Down-Arrow] - fuzzy find history backward
 
-# Esc Backspace
-#bindkey "\e\b" backward-delete-word
-#bindkey "\e\b" vi-backward-kill-word
+bindkey '^[[H' beginning-of-line                    # [Home] - Go to beginning of line
+bindkey '^[[1~' beginning-of-line                   # [Home] - Go to beginning of line
+bindkey '^[OH' beginning-of-line                    # [Home] - Go to beginning of line
+bindkey '^[[F'  end-of-line                         # [End] - Go to end of line
+bindkey '^[[4~' end-of-line                         # [End] - Go to end of line
+bindkey '^[OF' end-of-line                          # [End] - Go to end of line
 
-# home. Fn-Shift-Left on mac
-bindkey "\e[H" beginning-of-line
-# end. Fn-Shift-Right on mac
-bindkey "\e[F" end-of-line
+# emacs style
+bindkey '^a' beginning-of-line
+bindkey '^e' end-of-line
 
-# Esc .
-bindkey "\e." insert-last-word
+bindkey ' ' magic-space                             # [Space] - do history expansion
 
-# Ctrl-A
-bindkey "^A" beginning-of-line
-# Ctrl-E
-bindkey "^E" end-of-line
+bindkey '^[[1;5C' forward-word                      # [Ctrl-RightArrow] - move forward one word
+bindkey '^[[1;5D' backward-word                     # [Ctrl-LeftArrow] - move backward one word
 
-#bindkey "^Xh" _complete_help
+# Make the delete key (or Fn + Delete on the Mac) work instead of outputting a ~
+bindkey '^?' backward-delete-char                   # [Delete] - delete backward
+bindkey '^[[3~' delete-char                         # [fn-Delete] - delete forward
+bindkey '^[3;5~' delete-char
+bindkey '\e[3~' delete-char
+
 
 if [ -e ~/.zsh/local ]; then
     source ~/.zsh/local
@@ -178,5 +181,7 @@ fi
 
 function mm() { pwd > ~/.last_dir }
 function gg() { cd "`cat ~/.last_dir`" }
-function chpwd { mm }
-gg
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+PATH=$PATH:/usr/local/rvm/bin # Add RVM to PATH for scripting
