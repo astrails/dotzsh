@@ -121,7 +121,7 @@ zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm 
 zstyle ':completion:*:*:(ssh|scp):*:*' hosts `sed 's/^\([^ ,]*\).*$/\1/' ~/.ssh/known_hosts`
 
 zstyle ':completion:*' insert-unambiguous true
-zstyle :compinstall filename '/Users/vitaly/.zshrc'
+zstyle :compinstall filename '~/.zshrc'
 autoload -Uz compinit; compinit
 
 # PROMPT
