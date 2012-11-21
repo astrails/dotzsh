@@ -128,7 +128,7 @@ autoload -Uz compinit; compinit
 
 setopt prompt_subst
 autoload -U promptinit; promptinit
-prompt vitaly
+prompt fancy
 
 # RVM
 if [[ -s /etc/profile.d/rvm.sh ]]; then
