@@ -5,8 +5,6 @@ alias .='pwd'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
-alias g='git'
-
 alias ls='ls -FG'
 alias ll='ls -FGl'
 
@@ -36,12 +34,6 @@ function ss() {
         fi
     fi
 }
-
-alias sd="if [ -f ./script/dbconsole ]; then ./script/dbconsole; else rails db; fi"
-alias s3=/usr/local/s3cmd/s3cmd
-alias rd="rdebug -c"
-
-alias :e=vim
 
 function ec2() {
   local ec2_conf=~/.aws/$1/ec2.sh
@@ -169,6 +161,11 @@ bindkey "\e." insert-last-word
 bindkey "^A" beginning-of-line
 # Ctrl-E
 bindkey "^E" end-of-line
+
+# 'v' in vi command model to edit command line
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
 
 #bindkey "^Xh" _complete_help
 
