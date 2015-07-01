@@ -54,14 +54,6 @@ function ec2() {
   fi
 }
 
-function rake() {
-  if [ -e bin/rake ]; then
-      bin/rake "$@"
-  else
-      /usr/bin/env rake "$@"
-  fi
-}
-
 # COLORS
 autoload colors; colors;
 
@@ -121,6 +113,11 @@ autoload -Uz compinit; compinit
 setopt prompt_subst
 autoload -U promptinit; promptinit
 prompt fancy
+
+# NVM
+if [ -e ~/.nvm/nvm.sh ]; then
+  source ~/.nvm/nvm.sh
+fi
 
 # RVM
 if [[ -s /etc/profile.d/rvm.sh ]]; then

@@ -1,7 +1,7 @@
 function g()
 {
   if [ -z "$1" ]; then
-    /bin/ls -l ~/.g/ | grep / | cut -d: -f2- | cut -d\  -f2-
+    /bin/ls ~/.g/ | cat
     read x
     g $x
   else
