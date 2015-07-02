@@ -17,7 +17,7 @@ if [ -e $NVMRC ]; then
   source $NVMRC
 fi
 
-DB_ENV_SH=~/bin/db_env.sh
+DB_ENV_SH=~/.zsh/db_env.sh
 if [ -e $DB_ENV_SH ]; then
   source $DB_ENV_SH
   db_local > /dev/null
