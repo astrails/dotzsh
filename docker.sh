@@ -10,6 +10,9 @@ function dmu
   source ~/.docker/.machine.sh
 
   echo $DOCKER_HOST
+  if [ '--swarm' == "$1" ]; then
+    shift
+  fi
 
   export DOCKER_IP=$(docker-machine ip "$@")
 }
