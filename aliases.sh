@@ -13,10 +13,10 @@ function g()
       echo "Can't find $1"
       return
     fi
-    local p=`readlink ~/.g/"$d"`
+
+    d=$(cd ~/.g/"$d";pwd -P)
+    echo changing to $d
     echo
-    echo changing ot $p
-    echo
-    cd $p
+    cd $d
   fi
 }
