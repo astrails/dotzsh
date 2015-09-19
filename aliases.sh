@@ -20,3 +20,5 @@ function g()
     cd $d
   fi
 }
+
+alias powlog="tail -f ~/Library/Logs/Pow/*.log ~/Library/Logs/Pow/*/*.log"
