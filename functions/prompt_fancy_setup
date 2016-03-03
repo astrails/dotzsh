@@ -4,10 +4,8 @@ _prompt_git_branch () {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
-_prompt_rvm () {
-  if [ -n "$rvm_path" -a -e "$rvm_path/bin/rvm-prompt" ]; then
-    $rvm_path/bin/rvm-prompt
-  fi
+_prompt_ruby () {
+  current_ruby
 }
 
 _prompt_git_status () {
@@ -52,11 +50,11 @@ _prompt_setup() {
   PS1="${last_status} ${user_color}${current_host} ${current_dir}
 ✗ %{${reset_color}%}"
 
-  local current_rvm="%{[90m%}\$(_prompt_rvm)"
+  local current_ruby="%{[90m%}\$(_prompt_ruby)"
   local current_branch="%{$fg_bold[blue]%}\$(_prompt_git_branch)%{$reset_color%}"
   local current_git_status='$(_prompt_git_status)'
 
-  RPS1="${current_rvm} ${current_branch} ${current_git_status} %{${reset_color}%}"
+  RPS1="${current_ruby} ${current_branch} ${current_git_status} %{${reset_color}%}"
 
   PS2="%_>"
 }

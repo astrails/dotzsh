@@ -155,15 +155,6 @@ if [ -e ~/.nvm/nvm.sh ]; then
   source ~/.nvm/nvm.sh
 fi
 
-# RVM
-if [[ -s /etc/profile.d/rvm.sh ]]; then
-  source /etc/profile.d/rvm.sh
-elif [[ -s ~/.rvm/scripts/rvm ]] ;then
- source ~/.rvm/scripts/rvm
-elif [[ -s /usr/local/rvm/scripts/rvm ]] ;then
- source /usr/local/rvm/scripts/rvm
-fi
-
 # BINDINGS
 #bindkey -e
 bindkey -v
