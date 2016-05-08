@@ -193,11 +193,18 @@ bindkey -M vicmd v edit-command-line
 
 #bindkey "^Xh" _complete_help
 
+# remember last CD directory
+function mm() { pwd > ~/.last_dir }
+function chpwd { mm }
+
+# change to the last directory
+function gg() { cd "`cat ~/.last_dir`" }
+
+# change to the last directory on new shell
+gg
+# setup ruby
+chruby_auto
+
 if [ -e ~/.zsh/local ]; then
     source ~/.zsh/local
 fi
-
-function mm() { pwd > ~/.last_dir }
-function gg() { cd "`cat ~/.last_dir`" }
-function chpwd { mm }
-gg
