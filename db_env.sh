@@ -1,4 +1,4 @@
-function db_dump() {
+function db_con_info() {
   echo
   echo == POSTGRES CONNECTION:
   echo PGUSER=$PGUSER
@@ -15,7 +15,7 @@ function db_reset() {
   unset PGPASSWORD
   unset PGDATABASE
 
-  db_dump
+  db_con_info
 }
 
 # postgres://user:password@host:port/database
@@ -49,7 +49,7 @@ function db_parse() {
   export PGPORT=$port
   export PGDATABASE=$database
 
-  db_dump
+  db_con_info
 }
 
 function db_remote() {
