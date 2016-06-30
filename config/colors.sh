@@ -40,8 +40,5 @@ export CLICOLOR=1
 #                1   2   3   4   5   6   7   8   9   10  11
 export LSCOLORS="Ex""Fx""cx""dx""bx""eg""ed""ab""ag""ac""ad"
 
-export LSCOLORS="Ex""Fx""cx""dx""bx""eg""ed""ab""ag""ac""ad"
-
-# GREP
-export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
+alias grep="`which grep` --color=auto"

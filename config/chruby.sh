@@ -1,5 +1,5 @@
 # setup ruby
-if chruby_auto > /dev/null; then
+if which chruby_auto > /dev/null; then
   function _ruby_setup() {
     chruby_auto
   }

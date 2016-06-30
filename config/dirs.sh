@@ -17,7 +17,11 @@ function mm() { pwd > ~/.last_dir }
 function chpwd { mm }
 
 # change to the last directory
-function gg() { cd "`cat ~/.last_dir`" }
+function gg() {
+  if [ -e ~/.last_dir  ]; then
+    cd "`cat ~/.last_dir`"
+  fi
+}
 
 # change to the last directory on new shell
 gg

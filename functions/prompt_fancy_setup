@@ -42,10 +42,12 @@ _prompt_setup() {
 
   local last_status="%(?,%{$fg[green]%}☺%{$reset_color%},%{$fg[red]%}☹%{$reset_color%})"
 
-  local user_color='%(!,%{$fg_bold[red]%},%{$fg_bold[green]%})'
+  #local user_color='%(!,%{$fg_bold[red]%},%{$fg_bold[green]%})'
+  local user_color='%(!,%{$fg_bold[red]%},%{$fg_bold[blue]%})'
+
   local current_host="%m ➜ "
   #local current_dir="%{$fg[cyan]%}%~"
-  local current_dir="%{$fg[cyan]%}%2/"
+  local current_dir="%{$fg[red]%}%2/"
 
   PS1="${last_status} ${user_color}${current_host} ${current_dir}
 ✗ %{${reset_color}%}"
