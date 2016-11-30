@@ -1,6 +1,6 @@
 function g()
 {
-  local dir=$(\ls ~/.g/ | fzf --select-1 -q "$*")
+  local dir=$(\ls ~/.g/ | fzf -1 -0 -q "$*")
 
   if [ -n "$dir" ]; then
     dir=$(cd ~/.g/"$dir";pwd -P)
