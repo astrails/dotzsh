@@ -55,20 +55,12 @@ setopt prompt_subst
 autoload -U promptinit; promptinit
 prompt fancy
 
-source ~/.zsh/config/aws.sh
-source ~/.zsh/config/colors.sh
-source ~/.zsh/config/nvm.sh
-source ~/.zsh/config/bindings.sh
-source ~/.zsh/config/aliases.sh
-source ~/.zsh/config/chruby.sh
-source ~/.zsh/config/dirs.sh
+# source config/*
+while read f; do
+  source ~/.zsh/config/$f
+done < <(\ls ~/.zsh/config)
 
-# source ~/.zsh/config/iterm.sh
-
+# source config.d/*
 while read f; do
   source ~/.zsh/config.d/$f
 done < <(\ls ~/.zsh/config.d)
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
