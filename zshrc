@@ -14,7 +14,10 @@ setopt hist_ignore_dups
 # OPTIONS
 export PAGER=less
 export EDITOR=vim
-export LC_CTYPE=en_US.UTF-8
+export LANG=en_US.UTF-8
+launchctl setenv LANG $LANG
+export LC_ALL=en_US.UTF-8
+launchctl setenv LC_ALL $LC_ALL
 setopt autocd
 setopt auto_pushd
 setopt extendedglob
@@ -52,7 +55,7 @@ setopt prompt_subst
 autoload -U promptinit; promptinit
 prompt fancy
 
-source ~/.zsh/config/ec2.sh
+source ~/.zsh/config/aws.sh
 source ~/.zsh/config/colors.sh
 source ~/.zsh/config/nvm.sh
 source ~/.zsh/config/bindings.sh
@@ -67,3 +70,5 @@ while read f; do
 done < <(\ls ~/.zsh/config.d)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

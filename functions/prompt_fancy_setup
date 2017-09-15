@@ -42,12 +42,22 @@ _prompt_setup() {
 
   local last_status="%(?,%{$fg[green]%}☺%{$reset_color%},%{$fg[red]%}☹%{$reset_color%})"
 
-  #local user_color='%(!,%{$fg_bold[red]%},%{$fg_bold[green]%})'
-  local user_color='%(!,%{$fg_bold[red]%},%{$fg_bold[blue]%})'
-
   local current_host="%m ➜ "
   #local current_dir="%{$fg[cyan]%}%~"
   local current_dir="%{$fg[red]%}%2/"
+
+  case $HOST in
+    kraken*)
+      local user_color='%(!,%{$bg[red]$fg_bold[blue]%},%{$bg[blue]$fg_bold[yellow]%})'
+      ;;
+    keno*)
+      local user_color='%(!,%{$bg[red]$fg_bold[yellow]%},%{$fg_bold[blue]%})'
+      ;;
+    *)
+      local user_color='%(!,%{$fg_bold[red]%},%{$fg_bold[green]%})'
+      ;;
+  esac
+
 
   PS1="${last_status} ${user_color}${current_host} ${current_dir}
 ✗ %{${reset_color}%}"
