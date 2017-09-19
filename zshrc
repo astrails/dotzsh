@@ -49,12 +49,6 @@ zstyle ':completion:*' insert-unambiguous true
 zstyle :compinstall filename '~/.zshrc'
 autoload -Uz compinit; compinit
 
-# PROMPT
-
-setopt prompt_subst
-autoload -U promptinit; promptinit
-prompt fancy
-
 # source config.d/*
 while read f; do
   source ~/.zsh/config.d/$f
