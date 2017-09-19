@@ -57,5 +57,5 @@ function db_remote() {
 }
 
 function db_local {
-  echo "$USER@localhost/$USER" | db_parse
+  echo "$USER:@localhost/$USER" | db_parse
 }
