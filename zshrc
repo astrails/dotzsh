@@ -55,12 +55,12 @@ setopt prompt_subst
 autoload -U promptinit; promptinit
 prompt fancy
 
-# source config/*
-while read f; do
-  source ~/.zsh/config/$f
-done < <(\ls ~/.zsh/config)
-
 # source config.d/*
 while read f; do
   source ~/.zsh/config.d/$f
 done < <(\ls ~/.zsh/config.d)
+
+# source config/*
+while read f; do
+  source ~/.zsh/config/$f
+done < <(\ls ~/.zsh/config)
