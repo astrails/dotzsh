@@ -1,0 +1,15 @@
+function remove_from_path() {
+  PATH=:$PATH:
+  PATH=${PATH//:$1:/:}
+  PATH=${PATH#:}
+  PATH=${PATH%:}
+  export PATH
+}
+
+function prepend_path() {
+  export PATH="$1:$PATH"
+}
+
+alias remove_anaconda="remove_from_path /usr/local/anaconda3/bin"
+alias add_anaconda="prepend_path /usr/local/anaconda3/bin"
+alias _konda=add_anaconda

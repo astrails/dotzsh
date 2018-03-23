@@ -1,0 +1,1 @@
+/Users/vitaly/my/config/dotfiles/zsh/profile.d/db_env.sh
